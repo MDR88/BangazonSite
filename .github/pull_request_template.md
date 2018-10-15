@@ -1,25 +1,19 @@
-Purpose:
+### Purpose:
 
 
 
-How it fits in context of the project:
+### How it fits in context of the project:
 
 
 
-Specific Feature affected:
+### Specific Feature affected:
 
 
 
-How to test (Be thorough!):
+### How to test (Be thorough!):
 
 1.
 
 
-
-2.
-
-
-
-3.
 
 
