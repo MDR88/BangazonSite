@@ -79,7 +79,11 @@ namespace Bangazon.Migrations
                     b.ToTable("AspNetUsers");
 
                     b.HasData(
-                        new { Id = "2c4fceca-c8fb-47b3-8eec-1ba8d954b6d1", AccessFailedCount = 0, ConcurrencyStamp = "8ccf1460-c4cf-458e-9298-9453d6ad6ced", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEKPMWPRtM+At1YnOUQTqo2UCwn0C0hyv+0612j6GQucxBZ9fsQMXVq4PYxe8+0lZ6A==", PhoneNumberConfirmed = false, SecurityStamp = "0d94c248-dd78-4eb2-bf4e-638407256b08", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" }
+
+                        new { Id = "2c4fceca-c8fb-47b3-8eec-1ba8d954b6d1", AccessFailedCount = 0, ConcurrencyStamp = "8ccf1460-c4cf-458e-9298-9453d6ad6ced", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEKPMWPRtM+At1YnOUQTqo2UCwn0C0hyv+0612j6GQucxBZ9fsQMXVq4PYxe8+0lZ6A==", PhoneNumberConfirmed = false, SecurityStamp = "0d94c248-dd78-4eb2-bf4e-638407256b08", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" },
+
+                        new { Id = "e7dea6c0-7263-4bd4-aa11-f8fba643ebdb", AccessFailedCount = 0, ConcurrencyStamp = "7c0e54c6-ca90-4d33-8daf-e80bb37165b7", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEGMlxW28LvMW8aelb+IIZ5voyrn74J20lRooLhNf1jGocLc/toxJ4SFqR/Anqkw2uA==", PhoneNumberConfirmed = false, SecurityStamp = "4b77bca1-af25-4e26-85a2-bfe10ecefa4d", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" }
+
                     );
                 });
 
@@ -143,7 +147,7 @@ namespace Bangazon.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(12);
+                        .HasMaxLength(25);
 
                     b.Property<string>("UserId")
                         .IsRequired();
@@ -155,8 +159,13 @@ namespace Bangazon.Migrations
                     b.ToTable("PaymentType");
 
                     b.HasData(
+<<<<<<< HEAD
                         new { PaymentTypeId = 1, AccountNumber = "86753095551212", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "American Express", UserId = "2c4fceca-c8fb-47b3-8eec-1ba8d954b6d1" },
                         new { PaymentTypeId = 2, AccountNumber = "4102948572991", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Discover", UserId = "2c4fceca-c8fb-47b3-8eec-1ba8d954b6d1" }
+=======
+                        new { PaymentTypeId = 1, AccountNumber = "86753095551212", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "American Express", UserId = "e7dea6c0-7263-4bd4-aa11-f8fba643ebdb" },
+                        new { PaymentTypeId = 2, AccountNumber = "4102948572991", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Discover", UserId = "e7dea6c0-7263-4bd4-aa11-f8fba643ebdb" }
+>>>>>>> master
                     );
                 });
 
@@ -165,6 +174,12 @@ namespace Bangazon.Migrations
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+<<<<<<< HEAD
+=======
+
+                    b.Property<string>("City")
+                        .IsRequired();
+>>>>>>> master
 
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAddOrUpdate()
