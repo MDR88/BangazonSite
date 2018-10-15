@@ -50,6 +50,7 @@ namespace Bangazon.Data {
                 FirstName = "admin",
                 LastName = "admin",
                 StreetAddress = "123 Infinity Way",
+                City = "Nashville",
                 UserName = "admin@admin.com",
                 NormalizedUserName = "ADMIN@ADMIN.COM",
                 Email = "admin@admin.com",

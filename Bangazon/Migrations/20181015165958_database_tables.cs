@@ -1,9 +1,10 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bangazon.Migrations
 {
-    public partial class BangazonTables : Migration
+    public partial class database_tables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -54,7 +55,7 @@ namespace Bangazon.Migrations
                 columns: table => new
                 {
                     ProductTypeId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Label = table.Column<string>(maxLength: 255, nullable: false)
                 },
                 constraints: table =>
@@ -67,7 +68,7 @@ namespace Bangazon.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -88,7 +89,7 @@ namespace Bangazon.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -173,10 +174,10 @@ namespace Bangazon.Migrations
                 columns: table => new
                 {
                     PaymentTypeId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DateCreated = table.Column<DateTime>(nullable: false, defaultValueSql: "GETDATE()"),
-                    Description = table.Column<string>(maxLength: 12, nullable: false),
-                    AccountNumber = table.Column<string>(maxLength: 20, nullable: false),
+                    Description = table.Column<string>(maxLength: 25, nullable: false),
+                    AccountNumber = table.Column<string>(maxLength: 25, nullable: false),
                     UserId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -195,7 +196,7 @@ namespace Bangazon.Migrations
                 columns: table => new
                 {
                     ProductId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DateCreated = table.Column<DateTime>(nullable: false, defaultValueSql: "GETDATE()"),
                     Description = table.Column<string>(maxLength: 255, nullable: false),
                     Title = table.Column<string>(maxLength: 55, nullable: false),
@@ -226,7 +227,7 @@ namespace Bangazon.Migrations
                 columns: table => new
                 {
                     OrderId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DateCreated = table.Column<DateTime>(nullable: false, defaultValueSql: "GETDATE()"),
                     DateCompleted = table.Column<DateTime>(nullable: true),
                     UserId = table.Column<string>(nullable: true),
@@ -254,7 +255,7 @@ namespace Bangazon.Migrations
                 columns: table => new
                 {
                     OrderProductId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     OrderId = table.Column<int>(nullable: false),
                     ProductId = table.Column<int>(nullable: false)
                 },
@@ -278,17 +279,17 @@ namespace Bangazon.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "StreetAddress", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "baab6cbf-858e-4ad6-9dab-e1a8dec8ace9", 0, "129fd968-4013-4164-9ecc-25a65e44710f", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEFJNYySwpL08prQAJZlC1PXUeh5HTOA8h/LZIm5Mg1VKYYzGFT7HjdNL9lo+1hbnww==", null, false, "e7c02669-9093-4bc3-a085-6389ee75a2c5", "123 Infinity Way", false, "admin@admin.com" });
+                values: new object[] { "034144df-c68d-472c-a048-4f029d93b3d7", 0, "2c7303d0-d025-42c5-85c4-063015f64285", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEGXj43arQneGF7R2ht8Yg3NSmeSCzJbY9nNaxaNjXP9Vc+Wuzk5sYRdJ11IA00S8Ug==", null, false, "42f3e89a-d686-4ae0-8aac-8b8ebe198c83", "123 Infinity Way", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "PaymentType",
                 columns: new[] { "PaymentTypeId", "AccountNumber", "DateCreated", "Description", "UserId" },
-                values: new object[] { 1, "86753095551212", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "American Express", "baab6cbf-858e-4ad6-9dab-e1a8dec8ace9" });
+                values: new object[] { 1, "86753095551212", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "American Express", "034144df-c68d-472c-a048-4f029d93b3d7" });
 
             migrationBuilder.InsertData(
                 table: "PaymentType",
                 columns: new[] { "PaymentTypeId", "AccountNumber", "DateCreated", "Description", "UserId" },
-                values: new object[] { 2, "4102948572991", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Discover", "baab6cbf-858e-4ad6-9dab-e1a8dec8ace9" });
+                values: new object[] { 2, "4102948572991", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Discover", "034144df-c68d-472c-a048-4f029d93b3d7" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -299,7 +300,8 @@ namespace Bangazon.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true);
+                unique: true,
+                filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -325,7 +327,8 @@ namespace Bangazon.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true);
+                unique: true,
+                filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Order_PaymentTypeId",

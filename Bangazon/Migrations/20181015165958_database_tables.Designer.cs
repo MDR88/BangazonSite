@@ -3,20 +3,23 @@ using System;
 using Bangazon.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Bangazon.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181015144831_BangazonTables")]
-    partial class BangazonTables
+    [Migration("20181015165958_database_tables")]
+    partial class database_tables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.2-rtm-30932");
+                .HasAnnotation("ProductVersion", "2.1.2-rtm-30932")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Bangazon.Models.ApplicationUser", b =>
                 {
@@ -72,19 +75,21 @@ namespace Bangazon.Migrations
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasName("UserNameIndex");
+                        .HasName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
 
                     b.HasData(
-                        new { Id = "baab6cbf-858e-4ad6-9dab-e1a8dec8ace9", AccessFailedCount = 0, ConcurrencyStamp = "129fd968-4013-4164-9ecc-25a65e44710f", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEFJNYySwpL08prQAJZlC1PXUeh5HTOA8h/LZIm5Mg1VKYYzGFT7HjdNL9lo+1hbnww==", PhoneNumberConfirmed = false, SecurityStamp = "e7c02669-9093-4bc3-a085-6389ee75a2c5", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" }
+                        new { Id = "034144df-c68d-472c-a048-4f029d93b3d7", AccessFailedCount = 0, ConcurrencyStamp = "2c7303d0-d025-42c5-85c4-063015f64285", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEGXj43arQneGF7R2ht8Yg3NSmeSCzJbY9nNaxaNjXP9Vc+Wuzk5sYRdJ11IA00S8Ug==", PhoneNumberConfirmed = false, SecurityStamp = "42f3e89a-d686-4ae0-8aac-8b8ebe198c83", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" }
                     );
                 });
 
             modelBuilder.Entity("Bangazon.Models.Order", b =>
                 {
                     b.Property<int>("OrderId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime?>("DateCompleted");
 
@@ -108,7 +113,8 @@ namespace Bangazon.Migrations
             modelBuilder.Entity("Bangazon.Models.OrderProduct", b =>
                 {
                     b.Property<int>("OrderProductId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("OrderId");
 
@@ -126,11 +132,12 @@ namespace Bangazon.Migrations
             modelBuilder.Entity("Bangazon.Models.PaymentType", b =>
                 {
                     b.Property<int>("PaymentTypeId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AccountNumber")
                         .IsRequired()
-                        .HasMaxLength(20);
+                        .HasMaxLength(25);
 
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAddOrUpdate()
@@ -138,7 +145,7 @@ namespace Bangazon.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(12);
+                        .HasMaxLength(25);
 
                     b.Property<string>("UserId")
                         .IsRequired();
@@ -150,15 +157,16 @@ namespace Bangazon.Migrations
                     b.ToTable("PaymentType");
 
                     b.HasData(
-                        new { PaymentTypeId = 1, AccountNumber = "86753095551212", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "American Express", UserId = "baab6cbf-858e-4ad6-9dab-e1a8dec8ace9" },
-                        new { PaymentTypeId = 2, AccountNumber = "4102948572991", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Discover", UserId = "baab6cbf-858e-4ad6-9dab-e1a8dec8ace9" }
+                        new { PaymentTypeId = 1, AccountNumber = "86753095551212", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "American Express", UserId = "034144df-c68d-472c-a048-4f029d93b3d7" },
+                        new { PaymentTypeId = 2, AccountNumber = "4102948572991", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Discover", UserId = "034144df-c68d-472c-a048-4f029d93b3d7" }
                     );
                 });
 
             modelBuilder.Entity("Bangazon.Models.Product", b =>
                 {
                     b.Property<int>("ProductId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAddOrUpdate()
@@ -193,7 +201,8 @@ namespace Bangazon.Migrations
             modelBuilder.Entity("Bangazon.Models.ProductType", b =>
                 {
                     b.Property<int>("ProductTypeId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Label")
                         .IsRequired()
@@ -222,7 +231,8 @@ namespace Bangazon.Migrations
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasName("RoleNameIndex");
+                        .HasName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
                 });
@@ -230,7 +240,8 @@ namespace Bangazon.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClaimType");
 
@@ -249,7 +260,8 @@ namespace Bangazon.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClaimType");
 
