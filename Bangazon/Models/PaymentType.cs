@@ -21,7 +21,7 @@ namespace Bangazon.Models
     public string Description { get; set; }
 
     [Required]
-    [StringLength(14)]
+    [StringLength(20)]
     public string AccountNumber { get; set; }
 
     [Required]
@@ -30,6 +30,6 @@ namespace Bangazon.Models
     [Required]
     public ApplicationUser User { get; set; }
 
-    public ICollection<Order> Orders { get; set; }
+    public virtual ICollection<Order> Orders { get; set; }
   }
 }
