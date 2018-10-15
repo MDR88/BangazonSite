@@ -202,8 +202,9 @@ namespace Bangazon.Migrations
                     Title = table.Column<string>(maxLength: 55, nullable: false),
                     Price = table.Column<double>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),
-                    City = table.Column<string>(nullable: false),
-                    UserId = table.Column<string>(nullable: false),
+                    City = table.Column<string>(nullable: true),
+                    UserId = table.Column<int>(nullable: false),
+                    UserId1 = table.Column<string>(nullable: false),
                     ProductTypeId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -216,8 +217,8 @@ namespace Bangazon.Migrations
                         principalColumn: "ProductTypeId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Product_AspNetUsers_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Product_AspNetUsers_UserId1",
+                        column: x => x.UserId1,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -231,7 +232,8 @@ namespace Bangazon.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DateCreated = table.Column<DateTime>(nullable: false, defaultValueSql: "GETDATE()"),
                     DateCompleted = table.Column<DateTime>(nullable: true),
-                    UserId = table.Column<string>(nullable: true),
+                    UserId = table.Column<int>(nullable: false),
+                    UserId1 = table.Column<string>(nullable: false),
                     PaymentTypeId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -244,11 +246,11 @@ namespace Bangazon.Migrations
                         principalColumn: "PaymentTypeId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Order_AspNetUsers_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Order_AspNetUsers_UserId1",
+                        column: x => x.UserId1,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -280,17 +282,17 @@ namespace Bangazon.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "StreetAddress", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "e7dea6c0-7263-4bd4-aa11-f8fba643ebdb", 0, "7c0e54c6-ca90-4d33-8daf-e80bb37165b7", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEGMlxW28LvMW8aelb+IIZ5voyrn74J20lRooLhNf1jGocLc/toxJ4SFqR/Anqkw2uA==", null, false, "4b77bca1-af25-4e26-85a2-bfe10ecefa4d", "123 Infinity Way", false, "admin@admin.com" });
+                values: new object[] { "28d875a4-ed77-4c25-8e64-c03fbde5cb16", 0, "ea341727-cc93-461f-9741-ef0a1564b762", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAECOQBOq9ImSMR5J9YYYiCpdwYyc0B9q861L60VUZ/ePURnqKqHyMezRXDQymisMOeA==", null, false, "9a59c504-4275-48ed-99fe-b934734d810f", "123 Infinity Way", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "PaymentType",
                 columns: new[] { "PaymentTypeId", "AccountNumber", "DateCreated", "Description", "UserId" },
-                values: new object[] { 1, "86753095551212", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "American Express", "e7dea6c0-7263-4bd4-aa11-f8fba643ebdb" });
+                values: new object[] { 1, "86753095551212", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "American Express", "28d875a4-ed77-4c25-8e64-c03fbde5cb16" });
 
             migrationBuilder.InsertData(
                 table: "PaymentType",
                 columns: new[] { "PaymentTypeId", "AccountNumber", "DateCreated", "Description", "UserId" },
-                values: new object[] { 2, "4102948572991", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Discover", "e7dea6c0-7263-4bd4-aa11-f8fba643ebdb" });
+                values: new object[] { 2, "4102948572991", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Discover", "28d875a4-ed77-4c25-8e64-c03fbde5cb16" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -337,9 +339,9 @@ namespace Bangazon.Migrations
                 column: "PaymentTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Order_UserId",
+                name: "IX_Order_UserId1",
                 table: "Order",
-                column: "UserId");
+                column: "UserId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderProduct_OrderId",
@@ -362,9 +364,9 @@ namespace Bangazon.Migrations
                 column: "ProductTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Product_UserId",
+                name: "IX_Product_UserId1",
                 table: "Product",
-                column: "UserId");
+                column: "UserId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
