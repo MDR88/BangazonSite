@@ -19,8 +19,7 @@ namespace Bangazon.Models
     [DataType(DataType.Date)]
     public DateTime? DateCompleted {get;set;}
 
-    [Required]
-    public int UserId { get; set; }
+
     [Required]
     public ApplicationUser User { get; set; }
 

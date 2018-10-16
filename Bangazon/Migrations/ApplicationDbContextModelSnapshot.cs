@@ -79,7 +79,7 @@ namespace Bangazon.Migrations
                     b.ToTable("AspNetUsers");
 
                     b.HasData(
-                        new { Id = "28d875a4-ed77-4c25-8e64-c03fbde5cb16", AccessFailedCount = 0, ConcurrencyStamp = "ea341727-cc93-461f-9741-ef0a1564b762", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAECOQBOq9ImSMR5J9YYYiCpdwYyc0B9q861L60VUZ/ePURnqKqHyMezRXDQymisMOeA==", PhoneNumberConfirmed = false, SecurityStamp = "9a59c504-4275-48ed-99fe-b934734d810f", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" }
+                        new { Id = "5135fdd5-9818-41d5-821c-f5c78a24aa3d", AccessFailedCount = 0, ConcurrencyStamp = "34a44871-f762-4de1-a82f-9559f8a11bb4", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAENS7XYGPniW+7vaoew/SBslESfc20USFOgSg2HklwOGhHG5EEqKL9BvJFGaGonaMrw==", PhoneNumberConfirmed = false, SecurityStamp = "1aaace1a-7895-46cc-a56d-e34f06e37bea", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" }
                     );
                 });
 
@@ -97,16 +97,14 @@ namespace Bangazon.Migrations
 
                     b.Property<int?>("PaymentTypeId");
 
-                    b.Property<int>("UserId");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .IsRequired();
 
                     b.HasKey("OrderId");
 
                     b.HasIndex("PaymentTypeId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Order");
                 });
@@ -158,8 +156,8 @@ namespace Bangazon.Migrations
                     b.ToTable("PaymentType");
 
                     b.HasData(
-                        new { PaymentTypeId = 1, AccountNumber = "86753095551212", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "American Express", UserId = "28d875a4-ed77-4c25-8e64-c03fbde5cb16" },
-                        new { PaymentTypeId = 2, AccountNumber = "4102948572991", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Discover", UserId = "28d875a4-ed77-4c25-8e64-c03fbde5cb16" }
+                        new { PaymentTypeId = 1, AccountNumber = "86753095551212", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "American Express", UserId = "5135fdd5-9818-41d5-821c-f5c78a24aa3d" },
+                        new { PaymentTypeId = 2, AccountNumber = "4102948572991", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Discover", UserId = "5135fdd5-9818-41d5-821c-f5c78a24aa3d" }
                     );
                 });
 
@@ -189,16 +187,14 @@ namespace Bangazon.Migrations
                         .IsRequired()
                         .HasMaxLength(55);
 
-                    b.Property<int>("UserId");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .IsRequired();
 
                     b.HasKey("ProductId");
 
                     b.HasIndex("ProductTypeId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Product");
                 });
@@ -340,7 +336,7 @@ namespace Bangazon.Migrations
 
                     b.HasOne("Bangazon.Models.ApplicationUser", "User")
                         .WithMany("Orders")
-                        .HasForeignKey("UserId1")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -374,7 +370,7 @@ namespace Bangazon.Migrations
 
                     b.HasOne("Bangazon.Models.ApplicationUser", "User")
                         .WithMany("Products")
-                        .HasForeignKey("UserId1")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
