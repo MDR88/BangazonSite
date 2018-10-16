@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bangazon.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181016163020_seeds")]
+    [Migration("20181016185029_seeds")]
     partial class seeds
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -81,7 +81,7 @@ namespace Bangazon.Migrations
                     b.ToTable("AspNetUsers");
 
                     b.HasData(
-                        new { Id = "36129720-be1a-46a5-a9d7-36cd7dcd5e79", AccessFailedCount = 0, ConcurrencyStamp = "fbc63036-35da-4a5f-ab65-7e1a2846b61c", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEI3FqosfX4FR3T1V8MIKjwsw8Tdj4DVxA12as+6EPAZ/2C/46PDEqrDohLoceiLEFg==", PhoneNumberConfirmed = false, SecurityStamp = "eae633ce-8ea2-40ee-8b2a-ab558ba77fd2", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" }
+                        new { Id = "ed8d43f6-1932-43a6-8488-61699ddb1b24", AccessFailedCount = 0, ConcurrencyStamp = "4d37506e-31bc-4018-a050-ba7b2c7ee5c4", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEIyB05KCCPBg1PrII4vZWbDc8KFgR5RJf5/C9thbiaa0uf5IFqFoWgSDvA3tjWKxDw==", PhoneNumberConfirmed = false, SecurityStamp = "3510530e-ec7a-4630-9977-75c4c19184b9", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" }
                     );
                 });
 
@@ -111,9 +111,9 @@ namespace Bangazon.Migrations
                     b.ToTable("Order");
 
                     b.HasData(
-                        new { OrderId = 1, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PaymentTypeId = 1, UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" },
-                        new { OrderId = 2, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PaymentTypeId = 2, UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" },
-                        new { OrderId = 3, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" }
+                        new { OrderId = 1, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PaymentTypeId = 1, UserId = "ed8d43f6-1932-43a6-8488-61699ddb1b24" },
+                        new { OrderId = 2, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PaymentTypeId = 2, UserId = "ed8d43f6-1932-43a6-8488-61699ddb1b24" },
+                        new { OrderId = 3, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), UserId = "ed8d43f6-1932-43a6-8488-61699ddb1b24" }
                     );
                 });
 
@@ -169,8 +169,8 @@ namespace Bangazon.Migrations
                     b.ToTable("PaymentType");
 
                     b.HasData(
-                        new { PaymentTypeId = 1, AccountNumber = "86753095551212", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "American Express", UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" },
-                        new { PaymentTypeId = 2, AccountNumber = "4102948572991", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Discover", UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" }
+                        new { PaymentTypeId = 1, AccountNumber = "86753095551212", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "American Express", UserId = "ed8d43f6-1932-43a6-8488-61699ddb1b24" },
+                        new { PaymentTypeId = 2, AccountNumber = "4102948572991", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Discover", UserId = "ed8d43f6-1932-43a6-8488-61699ddb1b24" }
                     );
                 });
 
@@ -212,9 +212,9 @@ namespace Bangazon.Migrations
                     b.ToTable("Product");
 
                     b.HasData(
-                        new { ProductId = 1, City = "Seattle", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Soft Scarf", Price = 15.0, ProductTypeId = 1, Quantity = 40, Title = "Scarf", UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" },
-                        new { ProductId = 2, City = "Portland", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "So Fluffy", Price = 5.0, ProductTypeId = 1, Quantity = 30, Title = "Fluffy Socks", UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" },
-                        new { ProductId = 3, City = "Nashville", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "ARRGGG", Price = 25.0, ProductTypeId = 1, Quantity = 50, Title = "Pirate Hat", UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" }
+                        new { ProductId = 1, City = "Seattle", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Soft Scarf", Price = 15.0, ProductTypeId = 1, Quantity = 40, Title = "Scarf", UserId = "ed8d43f6-1932-43a6-8488-61699ddb1b24" },
+                        new { ProductId = 2, City = "Portland", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "So Fluffy", Price = 5.0, ProductTypeId = 1, Quantity = 30, Title = "Fluffy Socks", UserId = "ed8d43f6-1932-43a6-8488-61699ddb1b24" },
+                        new { ProductId = 3, City = "Nashville", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "ARRGGG", Price = 25.0, ProductTypeId = 1, Quantity = 50, Title = "Pirate Hat", UserId = "ed8d43f6-1932-43a6-8488-61699ddb1b24" }
                     );
                 });
 
