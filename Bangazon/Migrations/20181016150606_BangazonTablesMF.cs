@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bangazon.Migrations
 {
-    public partial class BangazonTables : Migration
+    public partial class BangazonTablesMF : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -202,7 +202,7 @@ namespace Bangazon.Migrations
                     Title = table.Column<string>(maxLength: 55, nullable: false),
                     Price = table.Column<double>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),
-                    City = table.Column<string>(nullable: false),
+                    City = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: false),
                     ProductTypeId = table.Column<int>(nullable: false)
                 },
@@ -231,7 +231,7 @@ namespace Bangazon.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DateCreated = table.Column<DateTime>(nullable: false, defaultValueSql: "GETDATE()"),
                     DateCompleted = table.Column<DateTime>(nullable: true),
-                    UserId = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: false),
                     PaymentTypeId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -248,7 +248,7 @@ namespace Bangazon.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -280,17 +280,17 @@ namespace Bangazon.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "StreetAddress", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "e7dea6c0-7263-4bd4-aa11-f8fba643ebdb", 0, "7c0e54c6-ca90-4d33-8daf-e80bb37165b7", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEGMlxW28LvMW8aelb+IIZ5voyrn74J20lRooLhNf1jGocLc/toxJ4SFqR/Anqkw2uA==", null, false, "4b77bca1-af25-4e26-85a2-bfe10ecefa4d", "123 Infinity Way", false, "admin@admin.com" });
+                values: new object[] { "5135fdd5-9818-41d5-821c-f5c78a24aa3d", 0, "34a44871-f762-4de1-a82f-9559f8a11bb4", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAENS7XYGPniW+7vaoew/SBslESfc20USFOgSg2HklwOGhHG5EEqKL9BvJFGaGonaMrw==", null, false, "1aaace1a-7895-46cc-a56d-e34f06e37bea", "123 Infinity Way", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "PaymentType",
                 columns: new[] { "PaymentTypeId", "AccountNumber", "DateCreated", "Description", "UserId" },
-                values: new object[] { 1, "86753095551212", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "American Express", "e7dea6c0-7263-4bd4-aa11-f8fba643ebdb" });
+                values: new object[] { 1, "86753095551212", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "American Express", "5135fdd5-9818-41d5-821c-f5c78a24aa3d" });
 
             migrationBuilder.InsertData(
                 table: "PaymentType",
                 columns: new[] { "PaymentTypeId", "AccountNumber", "DateCreated", "Description", "UserId" },
-                values: new object[] { 2, "4102948572991", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Discover", "e7dea6c0-7263-4bd4-aa11-f8fba643ebdb" });
+                values: new object[] { 2, "4102948572991", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Discover", "5135fdd5-9818-41d5-821c-f5c78a24aa3d" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
