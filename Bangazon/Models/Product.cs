@@ -30,10 +30,9 @@ namespace Bangazon.Models
     [Required]
     public int Quantity { get; set; }
 
-        [Required]
-        public string City { get; set; }
+    public string City { get; set; }
 
-    [Required]
+        [Required]
     public ApplicationUser User { get; set; }
 
     [Required]
