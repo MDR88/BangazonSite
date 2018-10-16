@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bangazon.Migrations
 {
-    public partial class BangazonTablesMF : Migration
+    public partial class seeds : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -280,17 +280,61 @@ namespace Bangazon.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "StreetAddress", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "5135fdd5-9818-41d5-821c-f5c78a24aa3d", 0, "34a44871-f762-4de1-a82f-9559f8a11bb4", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAENS7XYGPniW+7vaoew/SBslESfc20USFOgSg2HklwOGhHG5EEqKL9BvJFGaGonaMrw==", null, false, "1aaace1a-7895-46cc-a56d-e34f06e37bea", "123 Infinity Way", false, "admin@admin.com" });
+                values: new object[] { "36129720-be1a-46a5-a9d7-36cd7dcd5e79", 0, "fbc63036-35da-4a5f-ab65-7e1a2846b61c", "admin@admin.com", true, "admin", "admin", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEI3FqosfX4FR3T1V8MIKjwsw8Tdj4DVxA12as+6EPAZ/2C/46PDEqrDohLoceiLEFg==", null, false, "eae633ce-8ea2-40ee-8b2a-ab558ba77fd2", "123 Infinity Way", false, "admin@admin.com" });
+
+            migrationBuilder.InsertData(
+                table: "ProductType",
+                columns: new[] { "ProductTypeId", "Label" },
+                values: new object[] { 1, "CLothing" });
+
+            migrationBuilder.InsertData(
+                table: "ProductType",
+                columns: new[] { "ProductTypeId", "Label" },
+                values: new object[] { 2, "Accessories" });
+
+            migrationBuilder.InsertData(
+                table: "Order",
+                columns: new[] { "OrderId", "DateCompleted", "DateCreated", "PaymentTypeId", "UserId" },
+                values: new object[] { 3, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "36129720-be1a-46a5-a9d7-36cd7dcd5e79" });
 
             migrationBuilder.InsertData(
                 table: "PaymentType",
                 columns: new[] { "PaymentTypeId", "AccountNumber", "DateCreated", "Description", "UserId" },
-                values: new object[] { 1, "86753095551212", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "American Express", "5135fdd5-9818-41d5-821c-f5c78a24aa3d" });
+                values: new object[,]
+                {
+                    { 1, "86753095551212", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "American Express", "36129720-be1a-46a5-a9d7-36cd7dcd5e79" },
+                    { 2, "4102948572991", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Discover", "36129720-be1a-46a5-a9d7-36cd7dcd5e79" }
+                });
 
             migrationBuilder.InsertData(
-                table: "PaymentType",
-                columns: new[] { "PaymentTypeId", "AccountNumber", "DateCreated", "Description", "UserId" },
-                values: new object[] { 2, "4102948572991", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Discover", "5135fdd5-9818-41d5-821c-f5c78a24aa3d" });
+                table: "Product",
+                columns: new[] { "ProductId", "City", "DateCreated", "Description", "Price", "ProductTypeId", "Quantity", "Title", "UserId" },
+                values: new object[,]
+                {
+                    { 1, "Seattle", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Soft Scarf", 15.0, 1, 40, "Scarf", "36129720-be1a-46a5-a9d7-36cd7dcd5e79" },
+                    { 2, "Portland", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "So Fluffy", 5.0, 1, 30, "Fluffy Socks", "36129720-be1a-46a5-a9d7-36cd7dcd5e79" },
+                    { 3, "Nashville", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "ARRGGG", 25.0, 1, 50, "Pirate Hat", "36129720-be1a-46a5-a9d7-36cd7dcd5e79" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Order",
+                columns: new[] { "OrderId", "DateCompleted", "DateCreated", "PaymentTypeId", "UserId" },
+                values: new object[] { 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "36129720-be1a-46a5-a9d7-36cd7dcd5e79" });
+
+            migrationBuilder.InsertData(
+                table: "Order",
+                columns: new[] { "OrderId", "DateCompleted", "DateCreated", "PaymentTypeId", "UserId" },
+                values: new object[] { 2, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "36129720-be1a-46a5-a9d7-36cd7dcd5e79" });
+
+            migrationBuilder.InsertData(
+                table: "OrderProduct",
+                columns: new[] { "OrderProductId", "OrderId", "ProductId" },
+                values: new object[] { 1, 1, 2 });
+
+            migrationBuilder.InsertData(
+                table: "OrderProduct",
+                columns: new[] { "OrderProductId", "OrderId", "ProductId" },
+                values: new object[] { 2, 2, 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

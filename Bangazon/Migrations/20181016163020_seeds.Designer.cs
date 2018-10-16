@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bangazon.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181016150606_BangazonTablesMF")]
-    partial class BangazonTablesMF
+    [Migration("20181016163020_seeds")]
+    partial class seeds
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.2-rtm-30932")
+                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -81,7 +81,7 @@ namespace Bangazon.Migrations
                     b.ToTable("AspNetUsers");
 
                     b.HasData(
-                        new { Id = "5135fdd5-9818-41d5-821c-f5c78a24aa3d", AccessFailedCount = 0, ConcurrencyStamp = "34a44871-f762-4de1-a82f-9559f8a11bb4", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAENS7XYGPniW+7vaoew/SBslESfc20USFOgSg2HklwOGhHG5EEqKL9BvJFGaGonaMrw==", PhoneNumberConfirmed = false, SecurityStamp = "1aaace1a-7895-46cc-a56d-e34f06e37bea", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" }
+                        new { Id = "36129720-be1a-46a5-a9d7-36cd7dcd5e79", AccessFailedCount = 0, ConcurrencyStamp = "fbc63036-35da-4a5f-ab65-7e1a2846b61c", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEI3FqosfX4FR3T1V8MIKjwsw8Tdj4DVxA12as+6EPAZ/2C/46PDEqrDohLoceiLEFg==", PhoneNumberConfirmed = false, SecurityStamp = "eae633ce-8ea2-40ee-8b2a-ab558ba77fd2", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" }
                     );
                 });
 
@@ -109,6 +109,12 @@ namespace Bangazon.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Order");
+
+                    b.HasData(
+                        new { OrderId = 1, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PaymentTypeId = 1, UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" },
+                        new { OrderId = 2, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PaymentTypeId = 2, UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" },
+                        new { OrderId = 3, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" }
+                    );
                 });
 
             modelBuilder.Entity("Bangazon.Models.OrderProduct", b =>
@@ -128,6 +134,11 @@ namespace Bangazon.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("OrderProduct");
+
+                    b.HasData(
+                        new { OrderProductId = 1, OrderId = 1, ProductId = 2 },
+                        new { OrderProductId = 2, OrderId = 2, ProductId = 1 }
+                    );
                 });
 
             modelBuilder.Entity("Bangazon.Models.PaymentType", b =>
@@ -158,8 +169,8 @@ namespace Bangazon.Migrations
                     b.ToTable("PaymentType");
 
                     b.HasData(
-                        new { PaymentTypeId = 1, AccountNumber = "86753095551212", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "American Express", UserId = "5135fdd5-9818-41d5-821c-f5c78a24aa3d" },
-                        new { PaymentTypeId = 2, AccountNumber = "4102948572991", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Discover", UserId = "5135fdd5-9818-41d5-821c-f5c78a24aa3d" }
+                        new { PaymentTypeId = 1, AccountNumber = "86753095551212", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "American Express", UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" },
+                        new { PaymentTypeId = 2, AccountNumber = "4102948572991", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Discover", UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" }
                     );
                 });
 
@@ -199,6 +210,12 @@ namespace Bangazon.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Product");
+
+                    b.HasData(
+                        new { ProductId = 1, City = "Seattle", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Soft Scarf", Price = 15.0, ProductTypeId = 1, Quantity = 40, Title = "Scarf", UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" },
+                        new { ProductId = 2, City = "Portland", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "So Fluffy", Price = 5.0, ProductTypeId = 1, Quantity = 30, Title = "Fluffy Socks", UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" },
+                        new { ProductId = 3, City = "Nashville", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "ARRGGG", Price = 25.0, ProductTypeId = 1, Quantity = 50, Title = "Pirate Hat", UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" }
+                    );
                 });
 
             modelBuilder.Entity("Bangazon.Models.ProductType", b =>
@@ -214,6 +231,11 @@ namespace Bangazon.Migrations
                     b.HasKey("ProductTypeId");
 
                     b.ToTable("ProductType");
+
+                    b.HasData(
+                        new { ProductTypeId = 1, Label = "CLothing" },
+                        new { ProductTypeId = 2, Label = "Accessories" }
+                    );
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
