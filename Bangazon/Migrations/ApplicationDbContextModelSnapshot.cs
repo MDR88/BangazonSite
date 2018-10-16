@@ -15,7 +15,7 @@ namespace Bangazon.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
+                .HasAnnotation("ProductVersion", "2.1.2-rtm-30932")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -79,19 +79,7 @@ namespace Bangazon.Migrations
                     b.ToTable("AspNetUsers");
 
                     b.HasData(
-<<<<<<< HEAD
-
-
-                        new { Id = "2c4fceca-c8fb-47b3-8eec-1ba8d954b6d1", AccessFailedCount = 0, ConcurrencyStamp = "8ccf1460-c4cf-458e-9298-9453d6ad6ced", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEKPMWPRtM+At1YnOUQTqo2UCwn0C0hyv+0612j6GQucxBZ9fsQMXVq4PYxe8+0lZ6A==", PhoneNumberConfirmed = false, SecurityStamp = "0d94c248-dd78-4eb2-bf4e-638407256b08", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" },
-
-                        new { Id = "e7dea6c0-7263-4bd4-aa11-f8fba643ebdb", AccessFailedCount = 0, ConcurrencyStamp = "7c0e54c6-ca90-4d33-8daf-e80bb37165b7", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEGMlxW28LvMW8aelb+IIZ5voyrn74J20lRooLhNf1jGocLc/toxJ4SFqR/Anqkw2uA==", PhoneNumberConfirmed = false, SecurityStamp = "4b77bca1-af25-4e26-85a2-bfe10ecefa4d", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" },
-
-
-                        new { Id = "5135fdd5-9818-41d5-821c-f5c78a24aa3d", AccessFailedCount = 0, ConcurrencyStamp = "34a44871-f762-4de1-a82f-9559f8a11bb4", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAENS7XYGPniW+7vaoew/SBslESfc20USFOgSg2HklwOGhHG5EEqKL9BvJFGaGonaMrw==", PhoneNumberConfirmed = false, SecurityStamp = "1aaace1a-7895-46cc-a56d-e34f06e37bea", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" }
-
-=======
-                        new { Id = "36129720-be1a-46a5-a9d7-36cd7dcd5e79", AccessFailedCount = 0, ConcurrencyStamp = "fbc63036-35da-4a5f-ab65-7e1a2846b61c", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEI3FqosfX4FR3T1V8MIKjwsw8Tdj4DVxA12as+6EPAZ/2C/46PDEqrDohLoceiLEFg==", PhoneNumberConfirmed = false, SecurityStamp = "eae633ce-8ea2-40ee-8b2a-ab558ba77fd2", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" }
->>>>>>> master
+                        new { Id = "1993ce1c-c338-410e-a70c-98758b2fe72c", AccessFailedCount = 0, ConcurrencyStamp = "c7b1a48f-af09-4c56-a84f-c788627c6a70", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEBwDh0BDDGHNj1hlyOeg5rIkDGtbUYkb8Yp6J0Io7ePwKpINNgg6Fl70bpzNK/O++Q==", PhoneNumberConfirmed = false, SecurityStamp = "9abcd903-39f8-4d3f-8c3f-76c58de9d1bd", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" }
                     );
                 });
 
@@ -121,9 +109,9 @@ namespace Bangazon.Migrations
                     b.ToTable("Order");
 
                     b.HasData(
-                        new { OrderId = 1, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PaymentTypeId = 1, UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" },
-                        new { OrderId = 2, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PaymentTypeId = 2, UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" },
-                        new { OrderId = 3, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" }
+                        new { OrderId = 1, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PaymentTypeId = 1, UserId = "1993ce1c-c338-410e-a70c-98758b2fe72c" },
+                        new { OrderId = 2, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PaymentTypeId = 2, UserId = "1993ce1c-c338-410e-a70c-98758b2fe72c" },
+                        new { OrderId = 3, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), UserId = "1993ce1c-c338-410e-a70c-98758b2fe72c" }
                     );
                 });
 
@@ -179,15 +167,8 @@ namespace Bangazon.Migrations
                     b.ToTable("PaymentType");
 
                     b.HasData(
-<<<<<<< HEAD
-
-                        new { PaymentTypeId = 1, AccountNumber = "86753095551212", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "American Express", UserId = "5135fdd5-9818-41d5-821c-f5c78a24aa3d" },
-                        new { PaymentTypeId = 2, AccountNumber = "4102948572991", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Discover", UserId = "5135fdd5-9818-41d5-821c-f5c78a24aa3d" }
-
-=======
-                        new { PaymentTypeId = 1, AccountNumber = "86753095551212", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "American Express", UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" },
-                        new { PaymentTypeId = 2, AccountNumber = "4102948572991", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Discover", UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" }
->>>>>>> master
+                        new { PaymentTypeId = 1, AccountNumber = "86753095551212", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "American Express", UserId = "1993ce1c-c338-410e-a70c-98758b2fe72c" },
+                        new { PaymentTypeId = 2, AccountNumber = "4102948572991", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Discover", UserId = "1993ce1c-c338-410e-a70c-98758b2fe72c" }
                     );
                 });
 
@@ -197,8 +178,7 @@ namespace Bangazon.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("City")
-                        .IsRequired();
+                    b.Property<string>("City");
 
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAddOrUpdate()
@@ -230,9 +210,9 @@ namespace Bangazon.Migrations
                     b.ToTable("Product");
 
                     b.HasData(
-                        new { ProductId = 1, City = "Seattle", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Soft Scarf", Price = 15.0, ProductTypeId = 1, Quantity = 40, Title = "Scarf", UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" },
-                        new { ProductId = 2, City = "Portland", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "So Fluffy", Price = 5.0, ProductTypeId = 1, Quantity = 30, Title = "Fluffy Socks", UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" },
-                        new { ProductId = 3, City = "Nashville", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "ARRGGG", Price = 25.0, ProductTypeId = 1, Quantity = 50, Title = "Pirate Hat", UserId = "36129720-be1a-46a5-a9d7-36cd7dcd5e79" }
+                        new { ProductId = 1, City = "Seattle", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Soft Scarf", Price = 15.0, ProductTypeId = 1, Quantity = 40, Title = "Scarf", UserId = "1993ce1c-c338-410e-a70c-98758b2fe72c" },
+                        new { ProductId = 2, City = "Portland", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "So Fluffy", Price = 5.0, ProductTypeId = 1, Quantity = 30, Title = "Fluffy Socks", UserId = "1993ce1c-c338-410e-a70c-98758b2fe72c" },
+                        new { ProductId = 3, City = "Nashville", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "ARRGGG", Price = 25.0, ProductTypeId = 1, Quantity = 50, Title = "Pirate Hat", UserId = "1993ce1c-c338-410e-a70c-98758b2fe72c" }
                     );
                 });
 
