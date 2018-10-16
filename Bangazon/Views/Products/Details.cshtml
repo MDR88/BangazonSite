@@ -1,0 +1,44 @@
+﻿@model Bangazon.Models.ProductViewModels.ProductDetailViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Product.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Product.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Product.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Quantity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Product.Quantity)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Product.ProductId">Edit</a> |
+    <a asp-action="Create" asp-route-id="@Model.Product.ProductId">Add</a>  |
+    <a asp-action="Index">Back to List</a>
+</div>
