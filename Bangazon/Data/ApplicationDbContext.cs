@@ -85,20 +85,6 @@ namespace Bangazon.Data
                 }
             );
 
-            modelBuilder.Entity<OrderProduct>().HasData(
-           new OrderProduct()
-           {
-               OrderProductId = 1,
-               OrderId = 1,
-               ProductId = 2
-           },
-           new OrderProduct()
-           {
-               OrderProductId = 2,
-               OrderId = 2,
-               ProductId = 1
-           }
-       );
 
             modelBuilder.Entity<ProductType>().HasData(
            new ProductType()
@@ -125,6 +111,7 @@ namespace Bangazon.Data
                    Quantity = 40,
                    City = "Seattle",
                    ProductTypeId = 1,
+                   UserId = user.Id
                },
                new Product()
                {
@@ -134,7 +121,8 @@ namespace Bangazon.Data
                    Price = 5.00,
                    Quantity = 30,
                    City = "Portland",
-                   ProductTypeId = 1
+                   ProductTypeId = 1,
+                   UserId = user.Id
 
                },
                new Product()
@@ -145,26 +133,47 @@ namespace Bangazon.Data
                    Price = 25.00,
                    Quantity = 50,
                    City = "Nashville",
-                   ProductTypeId = 1
+                   ProductTypeId = 1,
+                   UserId = user.Id
 
                }
            );
             modelBuilder.Entity<Order>().HasData(
                new Order()
                {
-                   OrderId = 1
+                   OrderId = 1,
+                   UserId = user.Id,
+                   PaymentTypeId = 1
                },
                new Order()
                {
-                   OrderId = 2
+                   OrderId = 2,
+                   UserId = user.Id,
+                   PaymentTypeId = 2
                },
                new Order()
                {
-                   OrderId = 3
+                   OrderId = 3,
+                   UserId = user.Id,
+                   PaymentTypeId = null
                }
 
           );
 
+            modelBuilder.Entity<OrderProduct>().HasData(
+           new OrderProduct()
+           {
+               OrderProductId = 1,
+               OrderId = 1,
+               ProductId = 2
+           },
+           new OrderProduct()
+           {
+               OrderProductId = 2,
+               OrderId = 2,
+               ProductId = 1
+           }
+       );
 
 
 
