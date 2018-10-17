@@ -15,7 +15,10 @@ namespace Bangazon.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
+
+
+                .HasAnnotation("ProductVersion", "2.1.2-rtm-30932")
+
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -79,7 +82,10 @@ namespace Bangazon.Migrations
                     b.ToTable("AspNetUsers");
 
                     b.HasData(
-                        new { Id = "ed8d43f6-1932-43a6-8488-61699ddb1b24", AccessFailedCount = 0, ConcurrencyStamp = "4d37506e-31bc-4018-a050-ba7b2c7ee5c4", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEIyB05KCCPBg1PrII4vZWbDc8KFgR5RJf5/C9thbiaa0uf5IFqFoWgSDvA3tjWKxDw==", PhoneNumberConfirmed = false, SecurityStamp = "3510530e-ec7a-4630-9977-75c4c19184b9", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" }
+
+
+                        new { Id = "1993ce1c-c338-410e-a70c-98758b2fe72c", AccessFailedCount = 0, ConcurrencyStamp = "c7b1a48f-af09-4c56-a84f-c788627c6a70", Email = "admin@admin.com", EmailConfirmed = true, FirstName = "admin", LastName = "admin", LockoutEnabled = false, NormalizedEmail = "ADMIN@ADMIN.COM", NormalizedUserName = "ADMIN@ADMIN.COM", PasswordHash = "AQAAAAEAACcQAAAAEBwDh0BDDGHNj1hlyOeg5rIkDGtbUYkb8Yp6J0Io7ePwKpINNgg6Fl70bpzNK/O++Q==", PhoneNumberConfirmed = false, SecurityStamp = "9abcd903-39f8-4d3f-8c3f-76c58de9d1bd", StreetAddress = "123 Infinity Way", TwoFactorEnabled = false, UserName = "admin@admin.com" }
+
                     );
                 });
 
@@ -109,9 +115,11 @@ namespace Bangazon.Migrations
                     b.ToTable("Order");
 
                     b.HasData(
-                        new { OrderId = 1, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PaymentTypeId = 1, UserId = "ed8d43f6-1932-43a6-8488-61699ddb1b24" },
-                        new { OrderId = 2, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PaymentTypeId = 2, UserId = "ed8d43f6-1932-43a6-8488-61699ddb1b24" },
-                        new { OrderId = 3, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), UserId = "ed8d43f6-1932-43a6-8488-61699ddb1b24" }
+
+                        new { OrderId = 1, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PaymentTypeId = 1, UserId = "1993ce1c-c338-410e-a70c-98758b2fe72c" },
+                        new { OrderId = 2, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), PaymentTypeId = 2, UserId = "1993ce1c-c338-410e-a70c-98758b2fe72c" },
+                        new { OrderId = 3, DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), UserId = "1993ce1c-c338-410e-a70c-98758b2fe72c" }
+
                     );
                 });
 
@@ -167,8 +175,10 @@ namespace Bangazon.Migrations
                     b.ToTable("PaymentType");
 
                     b.HasData(
-                        new { PaymentTypeId = 1, AccountNumber = "86753095551212", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "American Express", UserId = "ed8d43f6-1932-43a6-8488-61699ddb1b24" },
-                        new { PaymentTypeId = 2, AccountNumber = "4102948572991", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Discover", UserId = "ed8d43f6-1932-43a6-8488-61699ddb1b24" }
+
+                        new { PaymentTypeId = 1, AccountNumber = "86753095551212", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "American Express", UserId = "1993ce1c-c338-410e-a70c-98758b2fe72c" },
+                        new { PaymentTypeId = 2, AccountNumber = "4102948572991", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Discover", UserId = "1993ce1c-c338-410e-a70c-98758b2fe72c" }
+
                     );
                 });
 
@@ -210,9 +220,11 @@ namespace Bangazon.Migrations
                     b.ToTable("Product");
 
                     b.HasData(
-                        new { ProductId = 1, City = "Seattle", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Soft Scarf", Price = 15.0, ProductTypeId = 1, Quantity = 40, Title = "Scarf", UserId = "ed8d43f6-1932-43a6-8488-61699ddb1b24" },
-                        new { ProductId = 2, City = "Portland", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "So Fluffy", Price = 5.0, ProductTypeId = 1, Quantity = 30, Title = "Fluffy Socks", UserId = "ed8d43f6-1932-43a6-8488-61699ddb1b24" },
-                        new { ProductId = 3, City = "Nashville", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "ARRGGG", Price = 25.0, ProductTypeId = 1, Quantity = 50, Title = "Pirate Hat", UserId = "ed8d43f6-1932-43a6-8488-61699ddb1b24" }
+
+                        new { ProductId = 1, City = "Seattle", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Soft Scarf", Price = 15.0, ProductTypeId = 1, Quantity = 40, Title = "Scarf", UserId = "1993ce1c-c338-410e-a70c-98758b2fe72c" },
+                        new { ProductId = 2, City = "Portland", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "So Fluffy", Price = 5.0, ProductTypeId = 1, Quantity = 30, Title = "Fluffy Socks", UserId = "1993ce1c-c338-410e-a70c-98758b2fe72c" },
+                        new { ProductId = 3, City = "Nashville", DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "ARRGGG", Price = 25.0, ProductTypeId = 1, Quantity = 50, Title = "Pirate Hat", UserId = "1993ce1c-c338-410e-a70c-98758b2fe72c" }
+
                     );
                 });
 
