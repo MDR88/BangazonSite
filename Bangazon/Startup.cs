@@ -31,7 +31,7 @@ namespace Bangazon {
             });
 
             services.AddDbContext<ApplicationDbContext> (options =>
-                options.UseSqlServer (
+                options.UseSqlServer(
                     Configuration.GetConnectionString ("DefaultConnection")));
 
             services.AddDefaultIdentity<ApplicationUser> ()
@@ -61,6 +61,8 @@ namespace Bangazon {
                 routes.MapRoute (
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute("types", "types",
+    defaults: new { controller = "ProductTypes", action = "Types" });
             });
         }
     }
