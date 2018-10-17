@@ -9,4 +9,6 @@ namespace Bangazon.Models.ProductViewModels
         public ProductType ProductType { get; set; }
         public List<GroupedProducts> GroupedProducts { get; internal set; }
     }
+
+
 }
