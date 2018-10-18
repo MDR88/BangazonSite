@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Bangazon.Data;
 using Bangazon.Models;
+using Bangazon.Models.ProductViewModels;
+using Microsoft.AspNetCore.Identity;
 
 namespace Bangazon.Controllers
 {
@@ -14,10 +16,19 @@ namespace Bangazon.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public ProductsController(ApplicationDbContext context)
+        // Stores private reference to Identity Framework user manager
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public ProductsController(ApplicationDbContext context,
+                                  UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
+
+        // This task retrieves the currently authenticated user
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
 
         // GET: Products
         public async Task<IActionResult> Index(string searchString)
@@ -28,8 +39,8 @@ namespace Bangazon.Controllers
             {
                 applicationDbContext = applicationDbContext.Where(s => s.Title.Contains(searchString));
             }
-
             return View(await applicationDbContext.ToListAsync());
+
         }
 
         // GET: Products/Details/5
@@ -55,9 +66,8 @@ namespace Bangazon.Controllers
         // GET: Products/Create
         public IActionResult Create()
         {
-            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "ProductTypeId", "Label");
-            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id");
-            return View();
+            ProductSellViewModel productSellViewModel = new ProductSellViewModel(_context);
+            return View(productSellViewModel);
         }
 
         // POST: Products/Create
@@ -65,7 +75,8 @@ namespace Bangazon.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,DateCreated,Description,Title,Price,Quantity,City,UserId,ProductTypeId")] Product product)
+        public async Task<IActionResult> Create(Product product)
+
         {
             if (ModelState.IsValid)
             {
@@ -73,9 +84,9 @@ namespace Bangazon.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "ProductTypeId", "Label", product.ProductTypeId);
-            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", product.UserId);
-            return View(product);
+            ProductSellViewModel productSellViewModel = new ProductSellViewModel(_context);
+            return View(productSellViewModel);
+
         }
 
         // GET: Products/Edit/5
