@@ -1,5 +1,7 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿
+@using Microsoft.AspNetCore.Identity
 @using Bangazon.Models
+
 
 <!DOCTYPE html>
 <html>
@@ -43,6 +45,7 @@
                     <li><a asp-area="" asp-controller="producttypes" asp-action="Index">Product Types</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">View Cart</a></li>
                     <li><a asp-area="" asp-controller="Products" asp-action="Index">Products</a></li>
+
                     @inject SignInManager<ApplicationUser> SignInManager
                     @if (SignInManager.IsSignedIn(User))
                     {
@@ -55,6 +58,7 @@
                             </form>
                         </li>
                     }
+
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
