@@ -18,6 +18,7 @@ namespace BangazonTests
 
             [Theory]
             [InlineData("/")]
+            [InlineData("/Products")]
             [InlineData("/Products/Create")]
 
         public async Task Get_EndpointsReturnSuccessAndCorrectContentType(string url)
