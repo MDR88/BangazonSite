@@ -1,24 +1,55 @@
-﻿@model Bangazon.Models.ProductType
+﻿@model Bangazon.Models.ProductTypeViewModels.ProductTypeDetailViewModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Product Types";
 }
 
-<h2>Details</h2>
+<h2>Product Types</h2>
 
 <div>
-    <h4>ProductType</h4>
+    <h4>
+        @Html.DisplayFor(model => model.ProductType.Label)
+    </h4>
     <hr />
     <dl class="dl-horizontal">
+
+
         <dt>
-            @Html.DisplayNameFor(model => model.Label)
+            @Html.DisplayNameFor(model => model.ProductType.Label)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Label)
+            @Html.DisplayFor(model => model.ProductType.Label)
         </dd>
+
     </dl>
+    <table class="table">
+        
+        <tbody>
+            @foreach (var item in Model.ProductType.Products)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductType.Label)
+                    </td>
+                    @*<td>
+                            <a asp-action="Edit" asp-route-id="@item.ProductType.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ProductTypeId">Edit</a> |
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>
 </div>
