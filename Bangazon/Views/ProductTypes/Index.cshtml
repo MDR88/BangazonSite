@@ -34,8 +34,8 @@
         {
             <tr>
                 <td>
-
-                    @Html.DisplayFor(modelItem => itemtwo.Title)
+                    <a asp-action="Details" asp-controller="Products" asp-route-id="@itemtwo.ProductId">@itemtwo.Title</a>
+                    @*@Html.DisplayFor(modelItem => itemtwo.Title)*@
 
                 </td>
             </tr>
