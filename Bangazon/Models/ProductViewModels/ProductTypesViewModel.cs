@@ -1,8 +1,8 @@
-﻿using Bangazon.Models;
+﻿using Bangazon.Models.ProductTypeViewModels;
 using Bangazon.Data;
 using System.Collections.Generic;
 
-namespace Bangazon.Models.ProductViewModels
+namespace Bangazon.Models.ProductTypeViewModels
 {
     public class ProductTypesViewModel
     {
