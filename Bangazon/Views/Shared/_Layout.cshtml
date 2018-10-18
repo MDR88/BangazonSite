@@ -44,8 +44,6 @@
                     }
                     <li><a asp-area="" asp-controller="producttypes" asp-action="Index">Product Types</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">View Cart</a></li>
-                    <li><a asp-area="" asp-controller="Products" asp-action="Index">Products</a></li>
-
                     @inject SignInManager<ApplicationUser> SignInManager
                     @if (SignInManager.IsSignedIn(User))
                     {
