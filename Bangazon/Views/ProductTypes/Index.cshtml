@@ -24,12 +24,26 @@
             <tr>
                 <td>
                     <a asp-action="Details" asp-route-id="@item.TypeId">@item.TypeName</a>
-                    @Html.DisplayFor(modelItem => item.TypeName)
+                   (@Html.DisplayFor(modelItem => item.ProductCount))
+                   
+                        
 
                 </td>
-        </tr>
+            </tr>
+        @foreach (var itemtwo in item.Products)
+        {
+            <tr>
+                <td>
+
+                    @Html.DisplayFor(modelItem => itemtwo.Title)
+
+                </td>
+            </tr>
+
         
-        
+
+        }
+
         }
         @*<a asp-action="Edit" asp-route-id="@item.ProductTypeId">Edit</a> |
         <a asp-action="Delete" asp-route-id="@item.ProductTypeId">Delete</a>*@
