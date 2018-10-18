@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Bangazon.Data;
 using Bangazon.Models;
 using Bangazon.Models.ProductViewModels;
+using Bangazon.Models.ProductTypeViewModels;
+
 
 namespace Bangazon.Controllers
 {
@@ -63,21 +65,29 @@ namespace Bangazon.Controllers
 
         // GET: ProductTypes/Details/5
         public async Task<IActionResult> Details(int? id)
+
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var productType = await _context.ProductType
-                .FirstOrDefaultAsync(m => m.ProductTypeId == id);
-            if (productType == null)
+    ProductTypeDetailViewModel productTypeDetails = new ProductTypeDetailViewModel();
+
+    var productType = await _context.ProductType
+            .Include(p => p.Products)
+            .FirstOrDefaultAsync(m => m.ProductTypeId == id);
+                
+                       
+             if (productType == null)
             {
                 return NotFound();
             }
+    productTypeDetails.ProductType = productType;
+            return View(productTypeDetails);
+    
+}
 
-            return View(productType);
-        }
 
         // GET: ProductTypes/Create
         public IActionResult Create()

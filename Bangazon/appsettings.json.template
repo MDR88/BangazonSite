@@ -1,6 +1,8 @@
 {
   "ConnectionStrings": {
-    "DefaultConnection": "DESKTOP-TE03H1G\\SQLEXPRESS;Database=BangazonSite;Trusted_Connection=True;"
+
+    "DefaultConnection": "Server=LAPTOP-RIRPE28I\\SQLEXPRESS;Database=BangazonSite;Trusted_Connection=True;"
+
   },
   "Logging": {
     "LogLevel": {
