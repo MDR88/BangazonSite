@@ -43,16 +43,18 @@
                     <li><a asp-area="" asp-controller="producttypes" asp-action="Index">Product Types</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">View Cart</a></li>
                     <li><a asp-area="" asp-controller="Products" asp-action="Index">Products</a></li>
-
-                    <li>
-                        <form>
-                            <p>
-                                Title: <input type="text" name="SearchString">
-                                <input type="submit" value="Search" asp-controller="Products" asp-action="Index" />
-
-                            </p>
-                        </form>
-                    </li>
+                    @inject SignInManager<ApplicationUser> SignInManager
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li>
+                            <form>
+                                <p>
+                                    Title: <input type="text" name="SearchString">
+                                    <input type="submit" value="Search" asp-controller="Products" asp-action="Index" />
+                                </p>
+                            </form>
+                        </li>
+                    }
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
