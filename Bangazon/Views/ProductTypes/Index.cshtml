@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Bangazon.Models.ProductType>
+﻿@model Bangazon.Models.ProductTypeViewModels.ProductTypesViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Product Types";
 }
 
 <h2>Index</h2>
@@ -13,25 +13,38 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Label)
+                @Html.DisplayNameFor(model => model.GroupedProducts)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.GroupedProducts)
         {
             <tr>
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.ProductTypeId">@item.Label</a>
-                    @*@Html.DisplayFor(modelItem => item.Product.Name)*@
+                    <a asp-action="Details" asp-route-id="@item.TypeId">@item.TypeName</a>
+                   (@Html.DisplayFor(modelItem => item.ProductCount))
+                   
+                        
 
                 </td>
-        </tr>
+            </tr>
+        @foreach (var itemtwo in item.Products)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-controller="Products" asp-route-id="@itemtwo.ProductId">@itemtwo.Title</a>
+                   
+
+                </td>
+            </tr>
+
         
-        
+
         }
-        @*<a asp-action="Edit" asp-route-id="@item.ProductTypeId">Edit</a> |
-        <a asp-action="Delete" asp-route-id="@item.ProductTypeId">Delete</a>*@
+
+        }
+        
     </tbody>
 </table>
