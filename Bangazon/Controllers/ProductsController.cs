@@ -9,16 +9,27 @@ using Bangazon.Data;
 using Bangazon.Models;
 using Bangazon.Models.ProductViewModels;
 
+using Microsoft.AspNetCore.Identity;
+
 namespace Bangazon.Controllers
 {
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public ProductsController(ApplicationDbContext context)
+        // Stores private reference to Identity Framework user manager
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public ProductsController(ApplicationDbContext context,
+                                  UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
+
+        // This task retrieves the currently authenticated user
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
 
         // GET: Products
         public async Task<IActionResult> Index(string searchString)
@@ -29,8 +40,8 @@ namespace Bangazon.Controllers
             {
                 applicationDbContext = applicationDbContext.Where(s => s.Title.Contains(searchString));
             }
-
             return View(await applicationDbContext.ToListAsync());
+
         }
 
         // GET: Products/Details/5
@@ -60,6 +71,9 @@ namespace Bangazon.Controllers
             ProductCreateViewModel productCreateViewModel = new ProductCreateViewModel(_context);
             productCreateViewModel.Product = product;
             return View(productCreateViewModel);
+
+            ProductSellViewModel productSellViewModel = new ProductSellViewModel(_context);
+            return View(productSellViewModel);
         }
 
         // POST: Products/Create
@@ -79,6 +93,21 @@ namespace Bangazon.Controllers
         //    ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", product.UserId);
         //    return View(product);
         //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Product product)
+
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(product);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ProductSellViewModel productSellViewModel = new ProductSellViewModel(_context);
+            return View(productSellViewModel);
+
+        }
 
         // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)
