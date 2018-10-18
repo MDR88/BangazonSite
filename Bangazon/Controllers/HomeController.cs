@@ -13,8 +13,10 @@ using System.Diagnostics;
 namespace Bangazon.Controllers
 {
     public class HomeController : Controller
-    {
-        private readonly ApplicationDbContext _context;
+
+    { 
+         private readonly ApplicationDbContext _context;
+
 
         public HomeController(ApplicationDbContext context)
         {
