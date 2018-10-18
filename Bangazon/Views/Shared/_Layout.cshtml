@@ -31,6 +31,8 @@
                 </button>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Bangazon</a>
             </div>
+
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @inject SignInManager<ApplicationUser> SignInManager
@@ -40,6 +42,16 @@
                     }
                     <li><a asp-area="" asp-controller="producttypes" asp-action="Index">Product Types</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">View Cart</a></li>
+                    <li><a asp-area="" asp-controller="Products" asp-action="Index">Products</a></li>
+
+                    <li>
+                        <form>
+                            <p>
+                                Title: <input type="text" name="SearchString">
+                                <input type="submit" value="Filter" asp-controller="Products" asp-action="Index" />
+                            </p>
+                        </form>
+                    </li>
                 </ul>
                 <partial name="_LoginPartial" />
             </div>

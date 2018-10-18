@@ -19,7 +19,6 @@ namespace Bangazon.Controllers
         // Stores private reference to Identity Framework user manager
         private readonly UserManager<ApplicationUser> _userManager;
 
-
         public ProductsController(ApplicationDbContext context,
                                   UserManager<ApplicationUser> userManager)
         {
@@ -32,10 +31,16 @@ namespace Bangazon.Controllers
 
 
         // GET: Products
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            var applicationDbContext = _context.Product.Include(p => p.ProductType).Include(p => p.User);
+            var applicationDbContext = from a in _context.Product.Include(p => p.ProductType).Include(p => p.User) select a;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                applicationDbContext = applicationDbContext.Where(s => s.Title.Contains(searchString));
+            }
             return View(await applicationDbContext.ToListAsync());
+
         }
 
         // GET: Products/Details/5
@@ -63,9 +68,6 @@ namespace Bangazon.Controllers
         {
             ProductSellViewModel productSellViewModel = new ProductSellViewModel(_context);
             return View(productSellViewModel);
-
-            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id");
-            return View();
         }
 
         // POST: Products/Create
@@ -74,6 +76,7 @@ namespace Bangazon.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Product product)
+
         {
             if (ModelState.IsValid)
             {
@@ -82,8 +85,8 @@ namespace Bangazon.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ProductSellViewModel productSellViewModel = new ProductSellViewModel(_context);
-            return View(productSellViewModel); ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", product.UserId);
-            return View(product);
+            return View(productSellViewModel);
+
         }
 
         // GET: Products/Edit/5

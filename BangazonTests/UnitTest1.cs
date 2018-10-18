@@ -21,6 +21,7 @@ namespace BangazonTests
             [InlineData("/Products")]
             [InlineData("/Products/Create")]
 
+
         public async Task Get_EndpointsReturnSuccessAndCorrectContentType(string url)
             {
                 // Arrange
@@ -43,6 +44,7 @@ namespace BangazonTests
 
                 //Act
                 var response = await _client.GetAsync("/Products/Create");
+
                 var content = await response.Content.ReadAsStringAsync();
 
                 // Assert
