@@ -1,33 +1,10 @@
-<<<<<<< HEAD
 
-=======
-﻿@*@page "{searchString?}"*@
->>>>>>> master
 @model IEnumerable<Bangazon.Models.Product>
 @{
     ViewData["Title"] = "Home Page";
 }
 <h2>Recent Products</h2>
 
-<<<<<<< HEAD
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <a asp-controller="Products" asp-action="Details" asp-route-id="@item.ProductId">@item.Title</a>
-
-=======
-<h2>Recent Products</h2>
         
 
 <table class="table">
@@ -46,7 +23,7 @@
                 <td>
                     <a asp-controller="Products" asp-action="Details" asp-route-id="@item.ProductId">@item.Title</a>
                     
->>>>>>> master
+
                 </td>
             </tr>
         }
