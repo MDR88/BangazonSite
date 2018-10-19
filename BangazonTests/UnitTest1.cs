@@ -50,7 +50,7 @@ namespace BangazonTests
                 var _client = _factory.CreateClient();
 
                 //Act
-                var response = await _client.GetAsync("/Products/Details/");
+                var response = await _client.GetAsync("/Products/Details/1");
 
                 var content = await response.Content.ReadAsStringAsync();
 
