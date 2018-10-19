@@ -63,36 +63,13 @@ namespace Bangazon.Controllers
 
             return View(product);
         }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId, DateCreated, Description, Title, Price, Quantity, City, UserId, ProductTypeId")] Product product)
+        // GET: Products/Create
+        public IActionResult Create()
         {
-            ProductCreateViewModel productCreateViewModel = new ProductCreateViewModel(_context);
-            productCreateViewModel.Product = product;
-            return View(productCreateViewModel);
-
             ProductSellViewModel productSellViewModel = new ProductSellViewModel(_context);
             return View(productSellViewModel);
         }
 
-        // POST: Products/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("ProductId,DateCreated,Description,Title,Price,Quantity,City,UserId,ProductTypeId")] Product product)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(product);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "ProductTypeId", "Label", product.ProductTypeId);
-        //    ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", product.UserId);
-        //    return View(product);
-        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Product product)
