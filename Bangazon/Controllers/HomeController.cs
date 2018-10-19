@@ -13,8 +13,12 @@ using System.Diagnostics;
 namespace Bangazon.Controllers
 {
     public class HomeController : Controller
-    { 
-         private readonly ApplicationDbContext _context;
+
+
+    {
+        private readonly ApplicationDbContext _context;
+
+
 
         public HomeController(ApplicationDbContext context)
         {
@@ -27,7 +31,7 @@ namespace Bangazon.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

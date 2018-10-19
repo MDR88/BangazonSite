@@ -1,10 +1,14 @@
-﻿@*@page "{searchString?}"*@
+
 @model IEnumerable<Bangazon.Models.Product>
 @{
     ViewData["Title"] = "Home Page";
 }
-
 <h2>Recent Products</h2>
+
+
+
+
+
         
 
 <table class="table">
@@ -23,6 +27,7 @@
                 <td>
                     <a asp-controller="Products" asp-action="Details" asp-route-id="@item.ProductId">@item.Title</a>
                     
+
                 </td>
             </tr>
         }
