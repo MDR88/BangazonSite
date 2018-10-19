@@ -49,8 +49,8 @@ namespace Bangazon.Controllers
         // GET: Order/Create
         public IActionResult Create()
         {
-            ViewData["OrderId"] = new SelectList(_context.Order, "OrderId", "UserId");
-            ViewData["ProductId"] = new SelectList(_context.Product, "ProductId", "Description");
+            ViewData["OrderId"] = new SelectList(_context.Order, "OrderId", "OrderId");
+            ViewData["ProductId"] = new SelectList(_context.Product, "ProductId", "Title");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace Bangazon.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OrderId"] = new SelectList(_context.Order, "OrderId", "UserId", orderProduct.OrderId);
-            ViewData["ProductId"] = new SelectList(_context.Product, "ProductId", "Description", orderProduct.ProductId);
+            ViewData["OrderId"] = new SelectList(_context.Order, "OrderId", "OrderId", orderProduct.OrderId);
+            ViewData["ProductId"] = new SelectList(_context.Product, "ProductId", "Title", orderProduct.ProductId);
             return View(orderProduct);
         }
 
