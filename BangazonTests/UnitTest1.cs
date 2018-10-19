@@ -18,10 +18,10 @@ namespace BangazonTests
 
             [Theory]
             [InlineData("/")]
-            [InlineData("/Products")]
+            [InlineData("/Order")]
 
 
-            [InlineData("/Products/Details/1")]
+            [InlineData("/Order/Index")]
   
             public async Task Get_EndpointsReturnSuccessAndCorrectContentType(string url)
 
@@ -47,7 +47,7 @@ namespace BangazonTests
                 var _client = _factory.CreateClient();
 
                 //Act
-                var response = await _client.GetAsync("/Products/Create");
+                var response = await _client.GetAsync("/Order/Index");
 
                 var content = await response.Content.ReadAsStringAsync();
 
