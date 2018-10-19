@@ -57,7 +57,7 @@ namespace Bangazon.Controllers
                 .FirstOrDefaultAsync(m => m.ProductId == id);
             if (product == null)
             {
-                return NotFound();
+                return NotFound(    );
             }
 
             return View(product);
@@ -78,15 +78,25 @@ namespace Bangazon.Controllers
         public async Task<IActionResult> Create(Product product)
 
         {
+
+            ModelState.Remove("product.User");
+            ModelState.Remove("product.UserId");
+
             if (ModelState.IsValid)
             {
+            var user = await GetCurrentUserAsync();
+                product.User = user;
+
+        //Change this when working on the product category dropdown
+                product.ProductTypeId = 2;
+
                 _context.Add(product);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = product.ProductId });
             }
             ProductSellViewModel productSellViewModel = new ProductSellViewModel(_context);
+            productSellViewModel.Product = product;
             return View(productSellViewModel);
-
         }
 
         // GET: Products/Edit/5
